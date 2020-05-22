@@ -4,9 +4,20 @@
   padding: 0;
 }
 
+:root {
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --fw-black: 900;
+  --clr-gray-lighter: #f1f1f1;
+  --clr-gray-light: #A7A7A7;
+  --clr-gray-text: #6B6363;
+}
+
 body {
-  background: #f1f1f1;
-  color: #6B6363;
+  background: var(--clr-gray-lighter);
+  color: var(--clr-gray-text);
+  font-family: 'Lato', sans-serif;
 }
 
 .welcome {
@@ -51,6 +62,7 @@ body {
   background-color: #FFF;
   color: inherit;
   letter-spacing: 1px;
+  font-weight: var(--fw-bold);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   transform: scale(1);
   transition: all 0.25s;
@@ -58,7 +70,7 @@ body {
 
 .btn:hover,
 .btn:focus {
-  background-color: #A7A7A7;
+  background-color: var(--clr-gray-light);
   color: #FFF;
   outline: none;
   transform: scale(1.05);
