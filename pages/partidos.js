@@ -11,6 +11,24 @@ const partyData = [
   { title: "Câmaras Municipais", value: 160, total: 308 },
 ];
 
+const partyPosition = [
+  {
+    name: "Mário Soares",
+    src: "pessoas/MarioSoares.png",
+    position: "Secretário-Geral",
+  },
+  {
+    name: "António Macedo",
+    src: "pessoas/AntonioMacedo.png",
+    position: "Presidente",
+  },
+  {
+    name: "Francisco Salgado Zenha",
+    src: "pessoas/FranciscoSalgadoZenha.png",
+    position: "Presidente do Grupo Parlamentar",
+  },
+];
+
 const PartidosPage = () => {
   return (
     <div className="page-wrapper">
@@ -42,35 +60,19 @@ const PartidosPage = () => {
           })}
         </ul>
         <ul className="party__position">
-          <li className="party__position-item">
-            <img
-              src="pessoas/MarioSoares.png"
-              alt="Mario Soares"
-              className="party__position-img"
-            />
-            <p className="party__position-name">Mario Soares</p>
-            <p className="party__position-title">Secretário Geral</p>
-          </li>
-          <li className="party__position-item">
-            <img
-              src="pessoas/AntonioMacedo.png"
-              alt="Antonio Macedo"
-              className="party__position-img"
-            />
-            <p className="party__position-name">Antonio Macedo</p>
-            <p className="party__position-title">Presidente</p>
-          </li>
-          <li className="party__position-item">
-            <img
-              src="pessoas/FranciscoSalgadoZenha.png"
-              alt="Francisco Salgado Zenha"
-              className="party__position-img"
-            />
-            <p className="party__position-name">Francisco Salgado Zenha</p>
-            <p className="party__position-title">
-              Presidente do Grupo Parlamentar
-            </p>
-          </li>
+          {partyPosition.map((position) => (
+            <li className="party__position-item" key={position.position}>
+              <img
+                src={position.src}
+                alt={position.name}
+                className="party__position-img"
+              />
+              <div className="party__position-details">
+                <p className="party__position-name">{position.name}</p>
+                <p className="party__position-title">{position.position}</p>
+              </div>
+            </li>
+          ))}
         </ul>
         <input className="party__range" type="range" />
         <div className="party__other-logos">
