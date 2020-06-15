@@ -346,6 +346,7 @@ body {
   height: 1rem;
   border-radius: 5px;
   padding: 0 0.5rem;
+  transition: all 0.5s;
 }
 
 .party__data-item-value {
@@ -453,6 +454,9 @@ body {
 .party__other-logo {
   margin: 0.5em;
   cursor: pointer;
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 @media (min-width: 650px) {
@@ -467,7 +471,7 @@ body {
   .party__logo {
     position: absolute;
     left: 1em;
-    top: -.5em;
+    top: -0.5em;
     width: 15%;
   }
   .party__data {
@@ -501,9 +505,6 @@ body {
   }
   .party__other-logos {
     margin-bottom: 0;
-  }
-  .party__other-logo {
-    height: 40px;
   }
 }
 

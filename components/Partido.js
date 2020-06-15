@@ -1,46 +1,43 @@
 import Link from "next/link";
-import Header from "../components/Header";
-import Range from "../components/Range";
-
-const colorPS = "#f733b6";
-
-const partyData = [
-  { title: "Assembleia da República", value: 108, total: 230 },
-  { title: "Parlamento Europeu", value: 9, total: 21 },
-  { title: "Assembleia dos Açores", value: 30, total: 57 },
-  { title: "Assembleia da Madeira", value: 19, total: 47 },
-  { title: "Câmaras Municipais", value: 160, total: 308 },
-];
+import Header from "./Header";
+import Range from "./Range";
 
 const partyPosition = [
   {
     name: "Mário Soares",
-    src: "pessoas/MarioSoares.png",
+    src: "/pessoas/MarioSoares.png",
     position: "Secretário-Geral",
   },
   {
     name: "António Macedo",
-    src: "pessoas/AntonioMacedo.png",
+    src: "/pessoas/AntonioMacedo.png",
     position: "Presidente",
   },
   {
     name: "Francisco Salgado Zenha",
-    src: "pessoas/FranciscoSalgadoZenha.png",
+    src: "/pessoas/FranciscoSalgadoZenha.png",
     position: "Presidente do Grupo Parlamentar",
   },
 ];
 
-class PartidosPage extends React.Component {
+class Partido extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const { otherParties } = this.props;
+    const { party, nameFull, color, partyData } = this.props.party;
+
     return (
       <div className="page-wrapper">
         <Header />
         <div className="content content-party">
-          <img className="party__logo" src="/partidos/PS.png" alt="logo PS" />
+          <img
+            className="party__logo"
+            src={`/partidos/${party}.png`}
+            alt={`logo ${party}`}
+          />
           <Link href="#">
             <a className="btn btn-floating-action party__btn-small">
               <i className="material-icons">fast_forward</i>
@@ -52,7 +49,7 @@ class PartidosPage extends React.Component {
               Ver programa 2019
             </a>
           </Link>
-          <h1 className="party__name">Partido Socialista</h1>
+          <h1 className="party__name">{nameFull}</h1>
           <ul className="party__data">
             {partyData.map((item) => {
               const gradientPercent = (item.value / item.total) * 100;
@@ -62,7 +59,7 @@ class PartidosPage extends React.Component {
                   <div
                     className="party__data-item-bar"
                     style={{
-                      background: `linear-gradient(90deg, ${colorPS} 0%, ${colorPS} ${gradientPercent}%, white ${gradientPercent}%, white 100%)`,
+                      background: `linear-gradient(90deg, ${color} 0%, ${color} ${gradientPercent}%, white ${gradientPercent}%, white 100%)`,
                     }}
                   >
                     <p className="party__data-item-value">
@@ -89,49 +86,18 @@ class PartidosPage extends React.Component {
             ))}
           </ul>
           <div className="party__range-container">
-            <Range value="1986" min="1976" max="2020" color={colorPS}/>
+            <Range value="1986" min="1976" max="2020" color={color} />
           </div>
           <div className="party__other-logos">
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/PSD.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/BE.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/PCP.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/CDS.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/PAN.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/PEV.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/CH.png"
-              alt="logo PS"
-            />
-            <img
-              className="party__other-logo hover-scale"
-              src="/partidos/IL.png"
-              alt="logo PS"
-            />
+            {otherParties.map((party) => (
+              <Link key={party.party} href='/partidos/[id]' as={`/partidos/${party.party}`}>
+                <img
+                  className="party__other-logo hover-scale"
+                  src={`/partidos/${party.party}.png`}
+                  alt={`logo ${party.party}`}
+                />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -139,4 +105,4 @@ class PartidosPage extends React.Component {
   }
 }
 
-export default PartidosPage;
+export default Partido;
