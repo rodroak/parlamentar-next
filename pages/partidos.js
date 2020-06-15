@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { detect } from "detect-browser";
 import Header from "../components/Header";
+import Range from "../components/Range";
 
 const colorPS = "#f733b6";
 
@@ -33,34 +33,24 @@ const partyPosition = [
 class PartidosPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      year: "1986",
-      isChrome: false,
-    };
   }
-
-  componentDidMount() {
-    const browser = detect();
-    this.setState({
-      isChrome: browser.name === "chrome",
-    });
-  }
-
-  handleChange = (event) => {
-    this.setState({ year: event.target.value });
-  };
 
   render() {
-    const newValue = Number(((this.state.year - 1976) * 100) / (2020 - 1976));
-    const newPosition = 11 - newValue * 0.26;
-    const { isChrome } = this.state;
     return (
       <div className="page-wrapper">
         <Header />
         <div className="content content-party">
           <img className="party__logo" src="/partidos/PS.png" alt="logo PS" />
           <Link href="#">
-            <a className="btn party__btn">&#43;</a>
+            <a className="btn btn-floating-action party__btn-small">
+              <i className="material-icons">fast_forward</i>
+            </a>
+          </Link>
+          <Link href="#">
+            <a className="btn party__btn-large">
+              <i className="material-icons">fast_forward</i>
+              Ver programa 2019
+            </a>
           </Link>
           <h1 className="party__name">Partido Socialista</h1>
           <ul className="party__data">
@@ -99,27 +89,7 @@ class PartidosPage extends React.Component {
             ))}
           </ul>
           <div className="party__range-container">
-            <p className="party__range-min">1976</p>
-            <div className="party__range-wrapper">
-              <input
-                className="party__range"
-                min="1976"
-                max="2020"
-                type="range"
-                value={this.state.year}
-                onChange={this.handleChange}
-                style={{ background: isChrome ? `linear-gradient(90deg, ${colorPS} 0%, ${colorPS} ${newValue}%, #a7a7a7 ${newValue}%, #a7a7a7 100%)` : "transparent" }}
-              />
-              <p
-                className="party__range-value"
-                style={{
-                  left: `calc(${newValue}% + (${newPosition}px))`,
-                }}
-              >
-                {this.state.year}
-              </p>
-            </div>
-            <p className="party__range-max">2020</p>
+            <Range value="1986" min="1976" max="2020" color={colorPS}/>
           </div>
           <div className="party__other-logos">
             <img
