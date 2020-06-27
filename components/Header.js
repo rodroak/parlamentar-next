@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -7,6 +8,9 @@ const Header = () => {
   const toggleOpenState = () => {
     setOpen((prev) => !prev);
   };
+
+  const router = useRouter();
+  const selected = router.asPath.split("/")[1];
 
   return (
     <header className="header">
@@ -34,27 +38,27 @@ const Header = () => {
         <ul className="nav__ul">
           <li className="nav__li">
             <Link href="/parlamento">
-              <a className="nav__link hover-scale">Parlamento</a>
+              <a className={`nav__link hover-scale ${selected === "parlamento" ? "nav__link-selected" : ""}`}>Parlamento</a>
             </Link>
           </li>
           <li className="nav__li">
             <Link href="/governo">
-              <a className="nav__link hover-scale">Governo</a>
+              <a className={`nav__link hover-scale ${selected === "governo" ? "nav__link-selected" : ""}`}>Governo</a>
             </Link>
           </li>
           <li className="nav__li">
             <Link href="/orcamento">
-              <a className="nav__link hover-scale">Orçamento</a>
+              <a className={`nav__link hover-scale ${selected === "orcamento" ? "nav__link-selected" : ""}`}>Orçamento</a>
             </Link>
           </li>
           <li className="nav__li">
             <Link href="/partidos">
-              <a className="nav__link hover-scale">Partidos</a>
+              <a className={`nav__link hover-scale ${selected === "partidos" ? "nav__link-selected" : ""}`}>Partidos</a>
             </Link>
           </li>
           <li className="nav__li">
             <Link href="/eleicoes">
-              <a className="nav__link hover-scale">Eleições</a>
+              <a className={`nav__link hover-scale ${selected === "eleicoes" ? "nav__link-selected" : ""}`}>Eleições</a>
             </Link>
           </li>
         </ul>

@@ -26,7 +26,7 @@ class Partido extends React.Component {
   }
 
   render() {
-    const { otherParties } = this.props;
+    const { parties } = this.props;
     const { party, nameFull, color, partyData } = this.props.party;
 
     return (
@@ -89,12 +89,12 @@ class Partido extends React.Component {
             <Range value="1986" min="1976" max="2020" color={color} />
           </div>
           <div className="party__other-logos">
-            {otherParties.map((party) => (
-              <Link key={party.party} href='/partidos/[id]' as={`/partidos/${party.party}`}>
+            {parties.map((p) => (
+              <Link key={p.party} href='/partidos/[id]' as={`/partidos/${p.party}`}>
                 <img
                   className="party__other-logo hover-scale"
-                  src={`/partidos/${party.party}.png`}
-                  alt={`logo ${party.party}`}
+                  src={`/partidos/${p.party}.png`}
+                  alt={`logo ${p.party}`}
                 />
               </Link>
             ))}

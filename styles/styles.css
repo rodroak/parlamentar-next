@@ -23,7 +23,7 @@ body {
 
 .page-wrapper {
   min-height: 100vh;
-  display: flex;
+  display: flex;  
   flex-direction: column;
 }
 
@@ -192,6 +192,11 @@ body {
   padding: 1.2em;
 }
 
+.nav__link-selected {
+  color: var(--clr-ps);
+  transform: scale(1.05);
+}
+
 .nav__open,
 .nav__close {
   font-family: inherit;
@@ -268,14 +273,44 @@ body {
 
 .content {
   flex-grow: 1;
-  margin-top: 5rem;
+  padding-top: 5rem;
+  min-height: 100vh;
 }
 
 @media (min-width: 550px) and (max-width: 650px) {
   .content {
-    margin-top: 7rem;
+    padding-top: 7rem;
+    flex-grow: 0;
   }
 }
+
+/** PARTIDOS INDEX **/
+
+.content-party-index {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.party-index__logo {
+  margin: 2rem;
+  cursor: pointer;
+  max-height: 150px;
+  max-width: 150px;
+  object-fit: contain;
+  transform: scale(1);
+  transition: transform 0.5s;
+} 
+
+.party-index__logo:hover {
+  transform: scale(1.1);
+}
+
 
 /*** PARTIDOS ***/
 .content-party {
@@ -367,7 +402,7 @@ body {
   position: relative;
   margin: 0.5em;
   flex-basis: 150px;
-  height: 200px;
+  max-height: 200px;
 }
 
 .party__position-img {
@@ -467,11 +502,13 @@ body {
       ". position ."
       ". range ."
       ". other .";
+    align-items: center;
   }
   .party__logo {
+    align-self: start;
     position: absolute;
     left: 1em;
-    top: -0.5em;
+    top: calc(-0.5em + 5rem);
     width: 15%;
   }
   .party__data {
@@ -497,13 +534,11 @@ body {
     margin-top: 1rem;
     align-self: center;
   }
-  .party__position-item {
-    height: 175px;
-  }
   .party__range-container {
     margin: 0 auto 1rem;
   }
   .party__other-logos {
+    align-self: start;
     margin-bottom: 0;
   }
 }
