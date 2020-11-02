@@ -19,6 +19,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
+          <link rel="shotcut icon" href="/logo.svg" />
         </Head>
         <body>
           <Main />

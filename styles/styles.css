@@ -13,6 +13,8 @@
   --clr-gray-light: #a7a7a7;
   --clr-gray-text: #6b6363;
   --clr-ps: #f733b6;
+  --clr-ok: #1db058;
+  --clr-nok: #bf5b5b;
 }
 
 body {
@@ -23,7 +25,7 @@ body {
 
 .page-wrapper {
   min-height: 100vh;
-  display: flex;  
+  display: flex;
   flex-direction: column;
 }
 
@@ -305,12 +307,11 @@ body {
   object-fit: contain;
   transform: scale(1);
   transition: transform 0.5s;
-} 
+}
 
 .party-index__logo:hover {
   transform: scale(1.1);
 }
-
 
 /*** PARTIDOS ***/
 .content-party {

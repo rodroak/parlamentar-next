@@ -1,0 +1,11 @@
+id,party,detail,date,type,passed,for,against,abstention
+1,PSD,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,yes,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
+2,BE,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,11/10/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
+3,PCP,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Votação,yes,CDS-2 CH-all PSD-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all CDS-3
+4,CDS,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,yes,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
+5,L,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,not,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
+6,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,11/10/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
+7,PS,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,not,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
+8,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,5/9/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
+9,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,5/9/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
+10,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,15/8/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
