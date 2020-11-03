@@ -30,7 +30,8 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
   // GET WIDTH & HEIGHT FOR HEMICYCLE
 
   const r = Number(MPs[0].r);
-  const width = d3.max(MPs.map((d) => Number(d.cx))) + r + 50;
+  const width = d3.max(MPs.map((d) => Number(d.cx))) + r + 20;
+  const parliamentHeight = d3.max(MPs.map((d) => Number(d.cy))) + r;
   const height = r * 25 * 2.5 + 20;
 
   // SCALE FOR THE LEGEND
@@ -60,8 +61,9 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
     <svg
       id="parliament__svg"
       viewBox={`0 0 ${width} ${height}`}
-      width="auto"
-      height="auto"
+      preserveAspectRatio="xMidYMax"
+      width="100%"
+      height="100%"
     >
       <g id="parliament__graph">
         {MPsList.map((d) => (
@@ -69,18 +71,18 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
             cx={
               selectedVote
                 ? xScale(d.positionIndex % perRow) +
-                  (width - 50) / 2 +
+                  width / 2 +
                   (d.position === "for"
                     ? -xScale(perRow) * 2 - 15
                     : d.position === "abstention"
                     ? xScale(perRow) * 2 + 15
                     : 0)
-                : d.cx
+                : Number(d.cx) + 10
             }
             cy={
               selectedVote
                 ? yScale(Math.floor(d.positionIndex / perRow)) - 30
-                : d.cy
+                : Number(d.cy) + height - parliamentHeight
             }
             r={r}
             fill={d.fillColor}
@@ -92,7 +94,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
           />
         ))}
       </g>
-      <g id="parliament__legend" transform={`translate(${width - 35}, ${0})`}>
+      <g id="parliament__legend" transform={`translate(${width - 30}, ${0})`}>
         {partyInfo.map((d) => (
           <g key={d.party + "_legend"}>
             <MP
@@ -128,7 +130,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
               10 - // Width of image
               xScale(perRow) * 2 - // Width of other columns
               15 + // Gap between columns
-              (width - 50) / 2 // Center within parliament graph
+              width / 2 // Center within parliament graph
             }
             y={height - 20}
           />
@@ -136,7 +138,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
             href="https://firebasestorage.googleapis.com/v0/b/parlamentar-915f4.appspot.com/o/against.svg?alt=media&amp;token=65d1c57b-b6f9-4334-9f61-de8a2dadf294"
             width="20"
             height="20"
-            x={xScale(Math.floor(perRow / 2)) - 10 + (width - 50) / 2}
+            x={xScale(Math.floor(perRow / 2)) - 10 + width / 2}
             y={height - 20}
           />
           <image
@@ -148,7 +150,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
               10 +
               xScale(perRow) * 2 +
               15 +
-              (width - 50) / 2
+              width / 2
             }
             y={height - 20}
           />

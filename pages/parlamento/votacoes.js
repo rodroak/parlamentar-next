@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { loadAllData } from "../../lib/data/parliament";
 import Header from "../../components/Header";
 import ParliamentGraph from "../../components/Parliament/ParliamentGraph";
-import VoteCard from "../../components/Votes/VoteCard";
+import VoteCard, { VoteCardDummy } from "../../components/Votes/VoteCard";
 import VotesGrid from "../../components/Votes/VotesGrid";
 
 export default function Votacoes() {
@@ -16,7 +16,11 @@ export default function Votacoes() {
   const [selectOpen, setSelectOpen] = useState(false);
 
   // STATE FOR SELECTED VOTE
-  const [selectedVoteId, setSelectedVoteId] = useState("1");
+  const [selectedVote, setSelectedVote] = useState(null);
+
+  const setSelectedVoteById = (id) => {
+    setSelectedVote(data.votesData.filter((d) => d.id === id)[0]);
+  };
 
   if (!data) {
     return (
@@ -29,27 +33,49 @@ export default function Votacoes() {
   return (
     <div className="page-wrapper">
       <Header />
-      <div className="content">
+      <div className="content content-votacoes">
+        {/* <img src="/touch_icon.png" className="touch-icon" /> */}
+        <i className="material-icons touch-icon">touch_app</i>
         <div className="votes__container">
-          <VoteCard
-            {...data.votesData.filter((d) => d.id === selectedVoteId)[0]}
-          />
-          <div
-            className="votes__select-other"
-            onClick={() => setSelectOpen(!selectOpen)}
-          >
-            <i className="material-icons">
-              {selectOpen ? "expand_less" : "expand_more"}
-            </i>
+          <div className="votes__selected-container">
+            {selectedVote ? (
+              <VoteCard
+                voteData={selectedVote}
+                selected={true}
+                selectedColor={
+                  data.partyInfo.filter(
+                    (p) => p.party === selectedVote.party
+                  )[0].info.fillColor
+                }
+              />
+            ) : (
+              <VoteCardDummy />
+            )}
+            <div
+              className="votes__select-other"
+              onClick={() => setSelectOpen(!selectOpen)}
+            >
+              <i className="material-icons">
+                {selectOpen ? "expand_less" : "expand_more"}
+              </i>
+            </div>
           </div>
           <div
-            className="votes-grid-container"
-            style={{ display: selectOpen ? "block" : "none" }}
+            className={`votes__grid-container ${
+              selectOpen && "votes__grid-open"
+            }`}
           >
             <VotesGrid
               votesData={data.votesData}
-              setSelectedVoteId={(id) => {
-                setSelectedVoteId(id);
+              partyInfo={data.partyInfo}
+              selectedVote={selectedVote}
+              uniqueDates={data.uniqueDates}
+              onClickVote={(id) => {
+                setSelectedVoteById(id);
+                setSelectOpen(false);
+              }}
+              onClickSelectedVote={() => {
+                setSelectedVote(null);
                 setSelectOpen(false);
               }}
             />
@@ -59,9 +85,7 @@ export default function Votacoes() {
           <ParliamentGraph
             MPs={data.MPs}
             partyInfo={data.partyInfo}
-            selectedVote={
-              data.votesData.filter((d) => d.id === selectedVoteId)[0]
-            }
+            selectedVote={selectedVote}
           />
         </div>
       </div>

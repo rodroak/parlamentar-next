@@ -1,6 +1,21 @@
+.content-votacoes {
+  padding: 10px 15px 30px;
+  position: relative;
+}
+
+.content-votacoes .touch-icon {
+  position: absolute;
+  top: 115px;
+  left: 20px;
+  font-size: 1.5rem;
+  color: var(--clr-gray-light);
+}
+
+/*** PARLIAMENT ***/
+
 .parliament__container {
-  margin: 30px;
-  height: 600px;
+  height: calc(100% - 70px);
+  padding: 20px 0 30px;
 }
 
 .parliament__container text {
@@ -10,9 +25,21 @@
 /*** VOTES ***/
 
 .votes__container {
-  margin: 30px;
-  display: flex;
   position: relative;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.votes__selected-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.votes__selected-container .vote-card {
+  cursor: auto;
+  margin: 0;
 }
 
 .votes__select-other {
@@ -36,16 +63,52 @@
   color: var(--clr-ps);
 }
 
+.votes__grid-container {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  width: 100%;
+  background-color: var(--clr-gray-lighter);
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
+
+.votes__grid-open {
+  display: block;
+}
+
+/* VERY IMPORTANT VERY FRAGILE DON'T KNOW HOW TO IMPROVE IT */
+
+.votes__grid-container {
+  height: calc(100vh - 30px - 100% - 5px - 75px); 
+}
+
+@media (min-width: 550px) and (max-width: 650px) {
+  .votes__grid-container {
+    height: calc(100vh - 30px - 100% - 5px - 110px);
+  }
+}
+
 /*** VOTE CARD ***/
 
 .vote-card {
   background-color: white;
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
   padding: 5px 10px 7px;
+  margin: 0 auto;
   width: 100%;
+
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;
+}
+.vote-card:hover {
+  border-color: var(--clr-gray-light);
+  background-color: var(--clr-gray-lighter);
 }
 
 .vote-card__stats {
@@ -57,7 +120,7 @@
 
 .vote-card__party-icon {
   height: 1rem;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 .vote-card__type {
@@ -79,16 +142,42 @@
   color: var(--clr-nok);
 }
 
+.vote-card-dummy {
+  cursor: auto;
+}
+
+.vote-card-dummy p {
+  background-color: var(--clr-gray-lighter);
+  height: 1rem;
+}
+
+.vote-card-dummy .vote-card__party {
+  width: 5ch;
+}
+
+.vote-card-dummy i {
+  color: var(--clr-gray-light);
+}
+
+.vote-card-dummy .vote-card__type {
+  width: 10ch;
+}
+
+.vote-card-dummy .vote-card__detail {
+  width: 80%;
+}
+
+.vote-card-dummy:hover {
+  border-color: transparent;
+  background-color: white;
+}
+
 /*** VOTES GRID ***/
 
-.votes-grid-container {
-  position: absolute;
-  top: calc(100% + 10px);
-  width: 100%;
-  background-color: var(--clr-gray-lighter);
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
+.votes-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .votes-grid__date {
@@ -118,6 +207,7 @@
   border-bottom: 12px solid transparent;
   width: 0;
   height: 0;
+  cursor: pointer;
 }
 
 .votes-grid__date-prev {
@@ -132,7 +222,100 @@
   border-right: 10px solid transparent;
 }
 
+.votes-grid__date-prev:hover {
+  border-right-color: var(--clr-ps);
+}
+
+.votes-grid__date-next:hover {
+  border-left-color: var(--clr-ps);
+}
+
+.votes-grid__date-disabled {
+  opacity: 0;
+  cursor: auto;
+}
+
 .votes-grid .vote-card {
   box-shadow: none;
   margin-bottom: 10px;
+}
+
+.votes-grid .vote-card:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (min-width: 800px) {
+  .content-votacoes .touch-icon {
+    top: 10px;
+    left: 10px;
+    font-size: 2rem;
+  }
+
+  .content-votacoes {
+    display: grid;
+    grid-template-columns: minmax(450px, 50%) minmax(300px, 50%);
+    grid-template-rows: 100%;
+    column-gap: 20px;
+  }
+
+  .votes__container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    height: 100%;
+    position: relative;
+    display: block;
+  }
+
+  .parliament__container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    height: 100%;
+    padding-top: 100px;
+  }
+
+  .votes__selected-container {
+    display: none;
+  }
+
+  .votes__grid-container {
+    display: block;
+    position: relative;
+    top: 0;
+    height: 100%;
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+
+  .votes__grid-container .vote-card {
+    max-width: 600px;
+  }
+
+  .votes__grid-container .vote-card,
+  .votes-grid__date p {
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .votes-grid__date {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .votes__select-other i {
+    font-size: 1.5rem;
+  }
+  .vote-card__stats {
+    font-size: 0.75rem;
+  }
+  .vote-card__pass,
+  .vote-card__fail {
+    font-size: 1rem;
+  }
+  .votes-grid__date i {
+    font-size: 1rem;
+  }
+  .content-votacoes {
+    font-size: 0.875rem;
+  }
 }
