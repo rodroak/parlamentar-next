@@ -61,7 +61,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
     <svg
       id="parliament__svg"
       viewBox={`0 0 ${width} ${height}`}
-      preserveAspectRatio="xMidYMax"
+      preserveAspectRatio="xMidYMid"
       width="100%"
       height="100%"
     >

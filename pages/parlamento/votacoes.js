@@ -82,11 +82,11 @@ export default function Votacoes() {
           </div>
         </div>
         <div className="parliament__container">
-          <ParliamentGraph
-            MPs={data.MPs}
-            partyInfo={data.partyInfo}
-            selectedVote={selectedVote}
-          />
+            <ParliamentGraph
+              MPs={data.MPs}
+              partyInfo={data.partyInfo}
+              selectedVote={selectedVote}
+            />
         </div>
       </div>
     </div>
