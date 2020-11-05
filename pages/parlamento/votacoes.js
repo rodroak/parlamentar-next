@@ -34,8 +34,6 @@ export default function Votacoes() {
     <div className="page-wrapper">
       <Header />
       <div className="content content-votacoes">
-        {/* <img src="/touch_icon.png" className="touch-icon" /> */}
-        <i className="material-icons touch-icon">touch_app</i>
         <div className="votes__container">
           <div className="votes__selected-container">
             {selectedVote ? (
@@ -82,11 +80,11 @@ export default function Votacoes() {
           </div>
         </div>
         <div className="parliament__container">
-            <ParliamentGraph
-              MPs={data.MPs}
-              partyInfo={data.partyInfo}
-              selectedVote={selectedVote}
-            />
+          <ParliamentGraph
+            MPs={data.MPs}
+            partyInfo={data.partyInfo}
+            selectedVote={selectedVote}
+          />
         </div>
       </div>
     </div>

@@ -1,11 +1,15 @@
-id,party,detail,date,type,passed,for,against,abstention
-1,PSD,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,yes,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
-2,BE,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,11/10/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
-3,PCP,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Votação,yes,CDS-2 CH-all PSD-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all CDS-3
-4,CDS,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,yes,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
-5,L,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,not,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
-6,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,11/10/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
-7,PS,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,not,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all
-8,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,5/9/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
-9,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,5/9/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
-10,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,15/8/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all
+id,party,detail,date,type,passed,for,against,abstention,link pdf
+1,Governo,Lei das Grandes Opções para 2021-2023,28/10/2020,Proposta de Lei,yes,PS-all,PSD-all BE-all CDS-all CH-all IL-all,PCP-all PAN-3 PEV-all,
+2,Governo,Aprova o Orçamento do Estado para 2021,28/10/2020,Proposta de Lei,yes,PS-all,PSD-all BE-all CDS-all CH-all IL-all,PCP-all PAN-3 PEV-all,
+3,PS,De pesar pelo falecimento da escritora e jornalista Helena Marques,28/10/2020,Projeto de Voto,yes,PS-all PSD-all BE-all PCP-all CDS-all PEV-all CH-all IL-all PAN-3,,,
+4,PSD,"Recomenda ao Governo que mantenha uma política integrada ao nível da sanidade e do bem-estar animal para os animais de companhia, reforçando a Direção-Geral de Alimentação e Veterinária",28/10/2020,Projeto de Resolução,not,PS-1 PSD-all PCP-all CDS-all PEV-all CH-all IL-all,PS-105 BE-all PAN-3,PS-2,
+5,PSD,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,yes,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all,
+6,BE,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,11/10/2019,Votação,yes,PS-all PAN-all PEV-all CDS-all PSD-all CH-all ,IL-all,BE-all PCP-all L-all,
+7,PCP,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Votação,yes,CDS-2 CH-all PSD-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all CDS-3,
+8,CDS,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,yes,PSD-all CDS-all CH-all PS-all IL-all BE-all PAN-all PCP-all L-all PEV-all,,,
+9,L,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,not,,,PSD-all CDS-all CH-all PS-all IL-all BE-all PAN-all PCP-all L-all PEV-all,
+10,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,11/10/2019,Votação,yes,,PSD-all CDS-all CH-all PS-all IL-all BE-all PAN-all PCP-all L-all PEV-all,,
+11,PS,Regime de estimulo ao ensino superior em baixa densidade,11/10/2019,Projecto-Lei,not,PSD-all CDS-all CH-all,BE-all PAN-all PCP-all L-all PEV-all,PS-all IL-all,
+12,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,5/9/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all,
+13,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,5/9/2019,Votação,yes,PS-all PAN-all PEV-all CDS-all PSD-all CH-all IL-all,,BE-all PCP-all L-all,
+14,PSD,1ª Alteração ao Regime Jurídico de Avaliação do Ensino Superior,15/8/2019,Votação,yes,PS-all PAN-all PEV-all,CDS-all PSD-all CH-all IL-all,BE-all PCP-all L-all,

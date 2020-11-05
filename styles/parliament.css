@@ -9,7 +9,7 @@
   left: 20px;
   font-size: 1.5rem;
   color: var(--clr-gray-light);
-  z-index: 5;
+  z-index: 2;
 }
 
 /*** PARLIAMENT ***/
@@ -29,7 +29,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 100px;
+  min-height: 100px;
 }
 
 .votes__selected-container {
@@ -73,6 +73,7 @@
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
   padding: 20px 10px;
   margin-bottom: 20px;
+  z-index: 3;
 }
 
 .votes__grid-open {
@@ -256,6 +257,7 @@
     top: 10px;
     left: 10px;
     font-size: 2rem;
+    z-index: 4;
   }
 
   .content-votacoes {
