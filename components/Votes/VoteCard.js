@@ -1,5 +1,5 @@
 import React from "react";
-import { hexToRgb } from "../../lib/utils/colors";
+import { hexToRgb } from "../../lib/utils/utils";
 
 export const VoteCardDummy = () => (
   <div className="vote-card vote-card-dummy">

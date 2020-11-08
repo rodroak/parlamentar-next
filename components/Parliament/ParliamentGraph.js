@@ -103,6 +103,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
     .scaleLinear()
     .domain([0, MAX_PER_COLUMN])
     .range([height - r, height - r * MAX_PER_COLUMN * SPACIOUS]);
+    
   // LIST OF MPS
 
   const MPsList = selectedVote ? selectedVote.votesDetail : MPs;
