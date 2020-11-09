@@ -53,8 +53,10 @@
   font-size: 2rem;
 }
 
-.map-pt__zoom-out:hover {
-  color: var(--clr-ps);
+@media (hover: hover) {
+  .map-pt__zoom-out:hover {
+    color: var(--clr-ps);
+  }
 }
 
 .map-pt__distrito {
@@ -78,11 +80,13 @@
   cursor: pointer;
 }
 
-.map-pt__selectable.map-pt__concelho:hover,
-.map-pt__selectable.map-pt__freguesia:hover {
-  fill-opacity: 0.5;
-}
+@media (hover: hover) {
+  .map-pt__selectable.map-pt__concelho:hover,
+  .map-pt__selectable.map-pt__freguesia:hover {
+    fill-opacity: 0.5;
+  }
 
-.map-pt__selectable.map-pt__distrito:hover {
-  fill-opacity: 0.3;
+  .map-pt__selectable.map-pt__distrito:hover {
+    fill-opacity: 0.3;
+  }
 }
