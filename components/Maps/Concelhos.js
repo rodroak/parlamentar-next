@@ -13,18 +13,22 @@ const Concelhos = ({ idFillColor, idOnClick, idSelected }) => {
     getConcelhos((pt) => setPt(pt));
   }, []);
 
-  const albersContinente = d3
-    .geoAlbers()
-    .scale(6500)
-    .rotate([7.8, 0])
-    .center([0, 39.55])
-    .translate([WIDTH / 2, HEIGHT / 2]);
-
-  const geoPath = d3.geoPath().projection(albersContinente);
-
   if (!pt) {
-    return <div></div>;
+    return <div>Getting data...</div>;
   }
+
+  function scale(scaleFactor, width, height) {
+    return d3.geoTransform({
+      point: function (x, y) {
+        this.stream.point(
+          (x - width / 2) * scaleFactor + width / 2,
+          -(y - height / 2) * scaleFactor + height / 2
+        );
+      },
+    });
+  }
+
+  const geoPath = d3.geoPath().projection(scale(0.001, WIDTH, HEIGHT));
 
   const onClickConcelho = (d) => {
     if (idSelected === d.properties.id) {
@@ -32,7 +36,7 @@ const Concelhos = ({ idFillColor, idOnClick, idSelected }) => {
         id: "500000",
         name: "Território Nacional",
       });
-      d3.select("#concelhos")
+      d3.select("#pt")
         .transition()
         .duration(750)
         .attr("transform", "translate(0, 0)");
@@ -45,7 +49,7 @@ const Concelhos = ({ idFillColor, idOnClick, idSelected }) => {
       const scale = 0.9 / Math.max(dx / WIDTH, dy / HEIGHT);
       const translate = [WIDTH / 2 - scale * x, HEIGHT / 2 - scale * y];
       idOnClick({ ...d.properties });
-      d3.select("#concelhos")
+      d3.select("#pt")
         .transition()
         .duration(750)
         .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
@@ -60,17 +64,28 @@ const Concelhos = ({ idFillColor, idOnClick, idSelected }) => {
         width="100%"
         height="100%"
       >
-        <g id="concelhos">
+        <g id="pt">
           {topojson.feature(pt, pt.objects.concelhos).features.map((d, i) => {
             return (
               <path
                 key={`concelhos-${d.properties.id}`}
                 d={geoPath(d)}
                 fill={idFillColor(d.properties.id)}
-                stroke={"#f1f1f1"}
+                stroke={"#ffffff"}
                 strokeWidth={0.2}
-                className="concelhos-map__item"
-                opacity={idSelected === d.properties.id ? 1 : 0.5}
+                className="concelho-map__item"
+                onClick={() => onClickConcelho(d)}
+              />
+            );
+          })}
+          {topojson.feature(pt, pt.objects.distritos).features.map((d, i) => {
+            return (
+              <path
+                key={`distritos-${d.properties.id}`}
+                d={geoPath(d)}
+                fill={"#ffffff"}
+                className="pt-map__item"
+                opacity={0}
                 onClick={() => onClickConcelho(d)}
               />
             );
@@ -81,7 +96,7 @@ const Concelhos = ({ idFillColor, idOnClick, idSelected }) => {
               topojson.mesh(pt, pt.objects.distritos, (a, b) => a !== b)
             )}
             fill={"none"}
-            stroke={"#FFFFFF"}
+            stroke={"#ffffff"}
             strokeWidth={1}
           />
         </g>
