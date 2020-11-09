@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../../../components/Header";
-import Concelhos from "../../../components/Maps/Concelhos";
+import MapPT from "../../../components/Maps/MapPT";
 import ResultsTable from "../../../components/Elections/ResultsTable";
 import { getDataPR2016 } from "../../../lib/data/eleicoes";
 
@@ -35,7 +35,7 @@ export default function Presidenciais2016() {
       <Header />
       <div className="content content-PR">
         <div className="PR__map-container">
-          <Concelhos
+          <MapPT
             idFillColor={(id) => candidates[results[id].winnerId].color}
             idOnClick={setSelected}
             idSelected={selected.id}

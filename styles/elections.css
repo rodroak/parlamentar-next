@@ -13,6 +13,7 @@
 
 .PR__map-container {
   height: 100%;
+  position: relative;
 }
 
 .PR__results-container {
@@ -39,7 +40,49 @@
 
 /*** CONCELHOS MAP ***/
 
-.pt-map__item:hover {
+.map-pt__zoom-out {
+  position: absolute;
+  border: none;
+  right: 0;
+  top: 0;
+  color: inherit;
   cursor: pointer;
-  opacity: 0.5;
+}
+
+.map-pt__zoom-out i {
+  font-size: 2rem;
+}
+
+.map-pt__zoom-out:hover {
+  color: var(--clr-ps);
+}
+
+.map-pt__distrito {
+  fill: #f1f1f1;
+  fill-opacity: 0;
+}
+
+.map-pt__bw.map-pt__freguesia {
+  fill-opacity: 0.6;
+}
+
+.map-pt__bw.map-pt__concelho {
+  fill-opacity: 0.4;
+}
+
+.map-pt__bw.map-pt__distrito {
+  fill-opacity: 0.75;
+}
+
+.map-pt__selectable {
+  cursor: pointer;
+}
+
+.map-pt__selectable.map-pt__concelho:hover,
+.map-pt__selectable.map-pt__freguesia:hover {
+  fill-opacity: 0.5;
+}
+
+.map-pt__selectable.map-pt__distrito:hover {
+  fill-opacity: 0.3;
 }
