@@ -1,14 +1,17 @@
 .content-PR {
-  padding: 10px 15px 30px;
+  padding: 20px 15px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 800px) {
-  .content-PR {
+  /* .content-PR {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100%;
-  }
+  } */
 }
 
 .PR__map-container {

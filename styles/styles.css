@@ -292,6 +292,15 @@ body {
   }
 }
 
+/*** PAGE TITLE ***/
+
+.page-title {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: var(--fw-light);
+  font-size: 1.5rem;
+}
+
 /** PARTIDOS INDEX **/
 
 .content-party-index {
