@@ -7,18 +7,20 @@ const ResultsTable = ({ candidates, results, name }) => {
       id: k,
       name: candidates[k].name,
       votes: results[k],
+      color: candidates[k].color,
     }))
     .sort((a, b) => b.votes - a.votes);
 
   return (
     <div className="results-table__container">
-      <p className="results-table__title">Resultados - {name}</p>
       <div className="results-table">
-        <p className="results-table__header-name">Nome</p>
-        <p className="results-table__header-total">Total</p>
-        <p className="results-table__header-prct">%</p>
-        {res_cand.map((d) => (
-          <>
+        {res_cand.map((d, i) => (
+          <React.Fragment key={i}>
+            <img
+              src={img_url}
+              className="results-table__item-img"
+              style={{ borderColor: d.color }}
+            />
             <p className="results-table__item-name">{d.name}</p>
             <p className="results-table__item-total">
               {numberWithCommas(d.votes)}
@@ -26,11 +28,14 @@ const ResultsTable = ({ candidates, results, name }) => {
             <p className="results-table__item-prct">
               {((d.votes / results.validos) * 100).toFixed(1)}%
             </p>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
   );
 };
+
+const img_url =
+  "https://firebasestorage.googleapis.com/v0/b/parlamentar-915f4.appspot.com/o/jmt.jfif?alt=media&token=8270242d-bb07-41da-a116-4265639fb98b";
 
 export default ResultsTable;

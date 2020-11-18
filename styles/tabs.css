@@ -40,12 +40,24 @@
 
 .tabs__content {
   width: 100%;
-  height: calc(100vh - 230px);
+  height: calc(100vh - 220px);
+  display: none;
+}
+
+.tabs__content-selected {
+  display: block;
 }
 
 @media (min-width: 550px) and (max-width: 650px) {
   .tabs__content {
     width: 100%;
-    height: calc(100vh - 270px);
+    height: calc(100vh - 260px);
+  }
+}
+
+@media (max-width: 400px) {
+  .tabs__header {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    font-size: 0.75rem;
   }
 }

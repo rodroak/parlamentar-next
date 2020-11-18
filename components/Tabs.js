@@ -11,12 +11,20 @@ const Tabs = ({ children, tabs }) => {
           <div
             className={`tabs__tab ${index === i && "tabs__tab-selected"}`}
             onClick={() => setIndex(i)}
+            key={i}
           >
             {t}
           </div>
         ))}
       </div>
-      <div className="tabs__content">{children[index]}</div>
+      {children.map((child, i) => (
+        <div
+          key={i}
+          className={`tabs__content ${index === i && "tabs__content-selected"}`}
+        >
+          {child}
+        </div>
+      ))}
     </div>
   );
 };

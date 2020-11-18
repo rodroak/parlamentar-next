@@ -1,11 +1,11 @@
-id,name,color
-0,Henrique Neto,#f733b6
-1,Sampaio da Nóvoa,#f733b6
-2,Cândido Ferreira,#f733b6
-3,Edgar Silva,#8A0100
-4,Jorge Sequeira,#dddddd
-5,Vitorino Silva,#dddddd
-6,Marisa Matias,#F50404
-7,Maria de Belém,#f733b6
-8,Marcelo Rebelo de Sousa,#FA8723
-9,Paulo de Morais,#FA8723
+﻿id,name,color,idade_eleicao,apoio_partidario,apoios_outros,cargos,subvencao_estatal,contribuicao_partidos,receitas_totais,despesas,fonte
+0,Henrique Neto,#f733b6,79,,José Ribeiro e Castro,Ex-deputado pelo PS,0.00,0.00,"67,927.08","248,771.52",http://www.tribunalconstitucional.pt/tc/file/Henrique%20Neto.pdf?src=1&mid=3745&bid=2876
+1,António Sampaio da Nóvoa,#f733b6,61,Livre/Tempo de Avançar e PCTP/MRPP,"António Ramalho Eanes, Mário Soares e Jorge Sampaio",Ex-reitor da Universidade de Lisboa,"896,928.92",0.00,"1,008,320.85","924,493.96",http://www.tribunalconstitucional.pt/tc/file/Sampaio%20da%20N%C3%B3voa.pdf?src=1&mid=3741&bid=2872
+2,Cândido Ferreira,#f733b6,66,,,Ex-presidente da Federação Distrital de Leiria do PS,0.00,0.00,"30,632.89","30,632.89",http://www.tribunalconstitucional.pt/tc/file/C%C3%A2ndido%20Ferreira_9-9-2016.pdf?src=1&mid=3742&bid=2873
+3,Edgar Silva,#8A0100,53,PCP,,Deputado da Assembleia da Madeira pelo PCP,0.00,"560,071.72","581,114.20","581,114.20",http://www.tribunalconstitucional.pt/tc/file/Edgar%20Silva.pdf?src=1&mid=3743&bid=2874
+4,Jorge Sequeira,#dddddd,49,,,Psicólogo e professor universitário,0.00,0.00,"6,161.40","6,041.02",http://www.tribunalconstitucional.pt/tc/file/Jorge%20Sequeira-22.05.2017.pdf?src=1&mid=3746&bid=2877
+5,Vitorino Silva,#dddddd,44,,,Ex-presidente da Junta de Freguesia de Rans,0.00,0.00,"8,171.90","8,159.70",http://www.tribunalconstitucional.pt/tc/file/Vitorino%20Silva%20_7-10-2016.pdf?src=1&mid=3751&bid=2882
+6,Marisa Matias,#F50404,39,BE,,Eurodeputada pelo BE,"290,215.62","281,000.00","883,305.22","601,715.37",http://www.tribunalconstitucional.pt/tc/file/Marisa%20Matias-13.03.2017.pdf?src=1&mid=3749&bid=2880
+7,Maria de Belém Roseira,#f733b6,66,,"Manuel Alegre, Jorge Coelho e António Almeida Santos",Ministra da Saúde (1995-1999); Ministra da Igualdade (1999-2000); Ex-presidente do PS,0.00,600.00,"94,280.00","541,896.96",http://www.tribunalconstitucional.pt/tc/file/Maria%20de%20Bel%C3%A9m-Ret.11-10-2016.pdf?src=1&mid=3748&bid=2879
+8,Marcelo Rebelo de Sousa,#FA8723,67,PSD e CDS,,Ex-presidente do PSD,"165,488.82",0.00,"224,408.82","179,507.85",http://www.tribunalconstitucional.pt/tc/file/Marcelo%20R.%20Sousa-23.03.2017.pdf?src=1&mid=3747&bid=2878
+9,Paulo Morais,#FA8723,52,,,Ex-vice-presidente da Câmara Municipal do Porto,0.00,0.00,"23,948.76","59,539.15",http://www.tribunalconstitucional.pt/tc/file/Paulo%20Morais.pdf?src=1&mid=3750&bid=2881

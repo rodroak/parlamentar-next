@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
-import { getConcelhos } from "../../lib/data/eleicoes";
+import { getType } from "../../lib/utils/utils";
 
-const MapPT = ({ idFillColor, idOnClick, idSelected }) => {
+const MapPT = ({ pt, idFillColor, idOnClick, idSelected }) => {
   const WIDTH = 350;
   const HEIGHT = 600;
 
-  const [pt, setPt] = useState(null);
-
-  useEffect(() => {
-    getConcelhos((pt) => setPt(pt));
-  }, []);
-
-  if (!pt) {
-    return <div>Getting data...</div>;
-  }
+  const [id, setId] = useState(idSelected);
 
   function scale(scaleFactor, width, height) {
     return d3.geoTransform({
       point: function (x, y) {
         this.stream.point(
           (x - width / 2) * scaleFactor + width / 2,
-          -(y - height / 2) * scaleFactor + height / 2
+          -(y - height / 2) * scaleFactor + height / 2 - 10
         );
       },
     });
@@ -44,13 +36,6 @@ const MapPT = ({ idFillColor, idOnClick, idSelected }) => {
       .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
   };
 
-  const getType = (id) => {
-    if (id === "500000") return "pt";
-    else if (id.slice(2, 6) === "0000") return "distrito";
-    else if (id.slice(4, 6) === "00") return "concelho";
-    else return "freguesia";
-  };
-
   const zoomOut = () => {
     idOnClick({
       id: "500000",
@@ -61,6 +46,21 @@ const MapPT = ({ idFillColor, idOnClick, idSelected }) => {
       .duration(750)
       .attr("transform", "translate(0, 0)");
   };
+
+  useEffect(() => {
+    if (getType(idSelected) === "pt") {
+      zoomOut();
+    } else if (getType(idSelected) !== "freguesia") {
+      const d = topojson
+        .feature(pt, pt.objects[`${getType(idSelected)}s`])
+        .features.filter((d) => d.properties.id === idSelected)[0];
+      zoomToArea(d);
+    }
+  }, [idSelected]);
+
+  if (!pt) {
+    return <div>Getting data...</div>;
+  }
 
   return (
     <>
@@ -123,7 +123,6 @@ const MapPT = ({ idFillColor, idOnClick, idSelected }) => {
                 }`}
                 onClick={() => {
                   if (idSelected.slice(0, 2) === d.properties.id.slice(0, 2)) {
-                    zoomToArea(d);
                     idOnClick({ ...d.properties });
                   }
                 }}
@@ -145,7 +144,6 @@ const MapPT = ({ idFillColor, idOnClick, idSelected }) => {
                   "map-pt__bw"
                 }`}
                 onClick={() => {
-                  zoomToArea(d);
                   idOnClick({ ...d.properties });
                 }}
               />
@@ -153,11 +151,11 @@ const MapPT = ({ idFillColor, idOnClick, idSelected }) => {
           })}
         </g>
       </svg>
-      {getType(idSelected) !== "pt" && (
+      {/* {getType(idSelected) !== "pt" && (
         <button className="map-pt__zoom-out" onClick={zoomOut}>
           <i className="material-icons">zoom_out_map</i>
         </button>
-      )}
+      )} */}
     </>
   );
 };

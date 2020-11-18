@@ -1,66 +1,109 @@
 .content-PR {
-  padding: 20px 15px;
+  padding: 15px 10px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@media (min-width: 800px) {
-  /* .content-PR {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100%;
-  } */
-}
-
-.PR__map-container {
-  height: 100%;
-  position: relative;
-}
-
 .PR__results-container {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: 100%;
 }
 
-/*** RESULTS TABLE ***/
+.PR__results-map {
+  height: 100%;
+  position: relative;
+  min-height: 300px;
+}
+
+.PR__results-location,
+.PR__results-zoom-out {
+  position: absolute;
+  background: rgba(241, 241, 241, 0.75);
+}
+
+.PR__results-location {
+  top: 0;
+  right: 0;
+}
+
+.PR__results-zoom-out {
+  bottom: 0;
+  right: 0;
+}
+
+.PR__results-table {
+  padding: 7px;
+  padding-left: 5px;
+  min-height: 100%;
+}
 
 .results-table {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
-  column-gap: 10px;
+  grid-template-columns: auto auto;
+  column-gap: 5px;
+  row-gap: 2px;
+  align-items: center;
+
+  font-size: 0.75rem;
 }
 
-.results-table__header-total,
-.results-table__header-prct,
-.results-table__item-total,
-.results-table__item-prct {
-  justify-self: center;
+.results-table__item-name,
+.results-table__item-total {
+  display: none;
 }
 
-/*** CONCELHOS MAP ***/
+.results-table__item-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+}
 
-.map-pt__zoom-out {
-  position: absolute;
+.PR__results-location {
+  max-width: 50%;
+  padding: 7px;
+}
+
+.PR__results-location span {
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.PR__results-location i {
+  font-size: 0.875rem;
+  position: relative;
+  top: 2px;
+}
+
+.PR__results-zoom-out {
   border: none;
-  right: 0;
-  top: 0;
   color: inherit;
   cursor: pointer;
 }
 
-.map-pt__zoom-out i {
-  font-size: 2rem;
+.PR__results-zoom-out i {
+  font-size: 1.75rem;
 }
 
 @media (hover: hover) {
-  .map-pt__zoom-out:hover {
+  .PR__results-location span:hover,
+  .PR__results-zoom-out:hover {
     color: var(--clr-ps);
   }
+
+  .PR__results-location span:hover i {
+    color: var(--clr-gray-text);
+  }
 }
+
+/*** CONCELHOS MAP ***/
 
 .map-pt__distrito {
   fill: #f1f1f1;
