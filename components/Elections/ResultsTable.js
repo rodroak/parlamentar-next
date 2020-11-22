@@ -1,13 +1,14 @@
 import React from "react";
 import { numberWithCommas } from "../../lib/utils/utils";
 
-const ResultsTable = ({ candidates, results, name, mode, toggleMode }) => {
+const ResultsTable = ({ candidates, results, mode, toggleMode }) => {
   const res_cand = Object.keys(candidates)
     .map((k) => ({
       id: k,
       name: candidates[k].name,
       votes: results[k],
       color: candidates[k].color,
+      img: candidates[k].img_small,
     }))
     .sort((a, b) => b.votes - a.votes);
 
@@ -31,7 +32,7 @@ const ResultsTable = ({ candidates, results, name, mode, toggleMode }) => {
           res_cand.map((d, i) => (
             <React.Fragment key={i}>
               <img
-                src={img_url}
+                src={d.img}
                 className="results-table__item-img"
                 style={{ borderColor: d.color }}
               />
@@ -66,16 +67,14 @@ const ResultsTable = ({ candidates, results, name, mode, toggleMode }) => {
             .sort((a, b) => b.votes - a.votes)
             .map((d, i) => (
               <React.Fragment key={i}>
-                {d.color ? (
+                {d.img ? (
                   <img
-                    src={img_url}
+                    src={d.img}
                     className="results-table__item-img"
                     style={{ borderColor: d.color }}
                   />
                 ) : (
-                  <div className="results-table__item-others">
-                    {d.id}
-                  </div>
+                  <div className="results-table__item-others">{d.id}</div>
                 )}
                 <p className="results-table__item-name">{d.name}</p>
                 <p className="results-table__item-total">
@@ -99,8 +98,5 @@ const ResultsTable = ({ candidates, results, name, mode, toggleMode }) => {
     </div>
   );
 };
-
-const img_url =
-  "https://firebasestorage.googleapis.com/v0/b/parlamentar-915f4.appspot.com/o/jmt.jfif?alt=media&token=8270242d-bb07-41da-a116-4265639fb98b";
 
 export default ResultsTable;

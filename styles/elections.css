@@ -42,8 +42,7 @@
 }
 
 .PR__results-table {
-  padding: 7px;
-  padding-left: 5px;
+  padding: 0px 7px 7px 5px;
 }
 
 .PR__results-location span {
@@ -164,6 +163,7 @@
   user-select: none;
 
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   cursor: pointer;
 }
@@ -182,12 +182,14 @@
   width: 15px;
   background-color: var(--clr-gray-lighter);
   border: 1px solid var(--clr-gray-light);
-  margin-left: 5px;
+  margin-right: 5px;
   flex-shrink: 0;
 }
 
-.results-table__checkbox:hover input ~ span {
-  background-color: #ccc;
+@media (hover: hover) {
+  .results-table__checkbox:hover input ~ span {
+    background-color: #ccc;
+  }
 }
 
 .results-table__checkbox input:checked ~ span {
@@ -247,5 +249,11 @@
   .results-table__checkbox {
     font-size: 0.75rem;
     margin-top: 10px;
+    flex-direction: row;
+  }
+
+  .results-table__checkbox span {
+    margin-left: 5px;
+    margin-right: 0;
   }
 }
