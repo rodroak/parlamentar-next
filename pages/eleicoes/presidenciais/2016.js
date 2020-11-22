@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import * as d3 from "d3";
 import Header from "../../../components/Header";
 import MapPT from "../../../components/Maps/MapPT";
 import ResultsTable from "../../../components/Elections/ResultsTable";
@@ -22,6 +23,15 @@ export default function Presidenciais2016() {
     id: "500000",
     name: "Território Nacional",
   });
+
+  // STATE FOR ABSTENTION MODE
+
+  const [mode, setMode] = useState("normal");
+
+  const colorScale = d3
+    .scaleLinear()
+    .domain([0, 100])
+    .range(["white", "black"]);
 
   if (!data || !pt) {
     return (
@@ -64,17 +74,28 @@ export default function Presidenciais2016() {
                 candidates={candidates}
                 results={results[selected.id]}
                 name={selected.name}
+                mode={mode}
+                toggleMode={() => {
+                  mode === "normal" ? setMode("abstention") : setMode("normal");
+                }}
               />
             </div>
             <div className="PR__results-map">
               <MapPT
                 pt={pt}
-                idFillColor={(id) => candidates[results[id].winnerId].color}
+                idFillColor={(id) => {
+                  if (mode === "normal")
+                    return candidates[results[id].winnerId].color;
+                  else if (mode === "abstention")
+                    return results[id][results[id].winnerId] >
+                      results[id].inscritos - results[id].votantes
+                      ? candidates[results[id].winnerId].color
+                      : "#a7a7a7";
+                }}
                 idOnClick={setSelected}
                 idSelected={selected.id}
               />
             </div>
-
             <div className="PR__results-location">
               {distrito && (
                 <span onClick={() => setSelected(distrito)}>
