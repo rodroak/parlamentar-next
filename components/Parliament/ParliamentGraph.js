@@ -133,7 +133,7 @@ const ParliamentGraph = ({ MPs, partyInfo, selectedVote }) => {
                 ? yScale(
                     Math.floor(d.positionIndex / voteVars[d.position].perRow)
                   ) - 30
-                : Number(d.cy) + height - parliamentHeight
+                : Number(d.cy) + height - parliamentHeight - 30
             }
             r={r}
             fill={d.fillColor}

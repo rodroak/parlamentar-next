@@ -1,21 +1,34 @@
 import { useEffect, useState } from "react";
-import * as d3 from "d3";
 import Header from "../../../components/Header";
+import Tabs from "../../../components/Tabs";
 import MapPT from "../../../components/Maps/MapPT";
 import ResultsTable from "../../../components/Elections/ResultsTable";
-import Tabs from "../../../components/Tabs";
+import CandidateCard from "../../../components/Elections/CandidateCard";
+import Loader from "../../../components/Utils/Loader";
 import { getDataPR2016, getConcelhos } from "../../../lib/data/eleicoes";
 import { getType } from "../../../lib/utils/utils";
 
 export default function Presidenciais2016() {
+  // STATE FOR ELECTION DATA
+  const [pt, setPt] = useState(null);
+  const [data, setData] = useState({
+    candidates: null,
+    results: null,
+  });
+
+  useEffect(() => {
+    getDataPR2016((d) => setData(d));
+    getConcelhos((pt) => setPt(pt));
+  }, []);
+
   return (
     <div className="page-wrapper">
       <Header />
       <div className="content content-PR">
         <h1 className="page-title">Presidenciais 2016</h1>
         <Tabs tabs={["Resultados", "Candidatos", "Sondagens", "Constituição"]}>
-          <ResultsTabContent />
-          <div>Olá aqui são os candidatos</div>
+          <ResultsTabContent {...data} pt={pt} />
+          <CandidatesTabContent candidates={data.candidates} />
           <div>Olá aqui são as sondagens</div>
           <div>Olá aqui é a constituição</div>
         </Tabs>
@@ -24,29 +37,42 @@ export default function Presidenciais2016() {
   );
 }
 
-const ResultsTabContent = () => {
-  // STATE FOR ELECTION DATA
-  const [data, setData] = useState(null);
-  const [pt, setPt] = useState(null);
+const CandidatesTabContent = ({ candidates }) => {
+  if (!candidates) {
+    return (
+      <div className="PR__loader-container">
+        <Loader />
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    getDataPR2016((d) => setData(d));
-    getConcelhos((pt) => setPt(pt));
-  }, []);
+  return (
+    <div className="PR__candidates-container">
+      <div className="PR__candidates-list">
+        {Object.keys(candidates).map((d, i) => (
+          <CandidateCard key={i} c={candidates[d]} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
+const ResultsTabContent = ({ candidates, results, pt }) => {
   // STATE FOR SELECTED RESULT
-
   const [selected, setSelected] = useState({
     id: "500000",
     name: "Território Nacional",
   });
 
   // STATE FOR ABSTENTION MODE
-
   const [mode, setMode] = useState("normal");
 
-  if (!data || !pt) {
-    return <div className="content">Loading...</div>;
+  if (!pt || !candidates || !results) {
+    return (
+      <div className="PR__loader-container">
+        <Loader />
+      </div>
+    );
   }
 
   const distrito =
@@ -66,8 +92,6 @@ const ResultsTabContent = () => {
             (d) => d.properties.id.slice(0, 4) === selected.id.slice(0, 4)
           )[0].properties,
         };
-
-  const { candidates, results } = data;
 
   return (
     <div className="PR__results-container">
