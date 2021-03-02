@@ -7,13 +7,13 @@ const HomePage = () => {
       <p className="welcome__msg">Welcome to Parlamentar!</p>
       <ul className="welcome__ul">
         <li className="welcome__li">
-          <Link href="/partidos/[id]" as="/partidos/PS">
-            <a className="btn">Let's go</a>
+          <Link href="/election_results">
+            <a className="btn">#1</a>
           </Link>
         </li>
         <li>
-          <Link href="/about">
-            <a className="btn">About us</a>
+          <Link href="/parliament_votes">
+            <a className="btn">#2</a>
           </Link>
         </li>
       </ul>

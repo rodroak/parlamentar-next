@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Header from "../../../components/Header";
-import Tabs from "../../../components/Tabs";
-import MapPT from "../../../components/Maps/MapPT";
-import ResultsTable from "../../../components/Elections/ResultsTable";
-import CandidateCard from "../../../components/Elections/CandidateCard";
-import Loader from "../../../components/Utils/Loader";
-import { getDataPR2016, getConcelhos } from "../../../lib/data/eleicoes";
-import { getType } from "../../../lib/utils/utils";
+import Header from "../components/Header";
+import Tabs from "../components/Tabs";
+import MapPT from "../components/Maps/MapPT";
+import ResultsTable from "../components/Elections/ResultsTable";
+import CandidateCard from "../components/Elections/CandidateCard";
+import Loader from "../components/Utils/Loader";
+import { getDataPR2016, getConcelhos } from "../lib/data/eleicoes";
+import { getType } from "../lib/utils/utils";
 
 export default function Presidenciais2016() {
   // STATE FOR ELECTION DATA
@@ -26,11 +26,9 @@ export default function Presidenciais2016() {
       <Header />
       <div className="content content-PR">
         <h1 className="page-title">Presidenciais 2016</h1>
-        <Tabs tabs={["Resultados", "Candidatos", "Sondagens", "Constituição"]}>
+        <Tabs tabs={["Resultados", "Candidatos"]}>
           <ResultsTabContent {...data} pt={pt} />
           <CandidatesTabContent candidates={data.candidates} />
-          <div>Olá aqui são as sondagens</div>
-          <div>Olá aqui é a constituição</div>
         </Tabs>
       </div>
     </div>

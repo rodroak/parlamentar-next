@@ -33,32 +33,33 @@ const Header = () => {
           &times;
         </button>
         <Link href="/">
-          <img className="nav__logo nav__logo__drawer hover-scale" src="/logo.png" alt="logo" />
+          <img
+            className="nav__logo nav__logo__drawer hover-scale"
+            src="/logo.png"
+            alt="logo"
+          />
         </Link>
         <ul className="nav__ul">
           <li className="nav__li">
-            <Link href="/parlamento">
-              <a className={`nav__link hover-scale ${selected === "parlamento" ? "nav__link-selected" : ""}`}>Parlamento</a>
+            <Link href="/election_results">
+              <a
+                className={`nav__link hover-scale ${
+                  selected === "election_results" ? "nav__link-selected" : ""
+                }`}
+              >
+                Election Results
+              </a>
             </Link>
           </li>
           <li className="nav__li">
-            <Link href="/governo">
-              <a className={`nav__link hover-scale ${selected === "governo" ? "nav__link-selected" : ""}`}>Governo</a>
-            </Link>
-          </li>
-          <li className="nav__li">
-            <Link href="/orcamento">
-              <a className={`nav__link hover-scale ${selected === "orcamento" ? "nav__link-selected" : ""}`}>Orçamento</a>
-            </Link>
-          </li>
-          <li className="nav__li">
-            <Link href="/partidos">
-              <a className={`nav__link hover-scale ${selected === "partidos" ? "nav__link-selected" : ""}`}>Partidos</a>
-            </Link>
-          </li>
-          <li className="nav__li">
-            <Link href="/eleicoes">
-              <a className={`nav__link hover-scale ${selected === "eleicoes" ? "nav__link-selected" : ""}`}>Eleições</a>
+            <Link href="/parliament_votes">
+              <a
+                className={`nav__link hover-scale ${
+                  selected === "parliament_votes" ? "nav__link-selected" : ""
+                }`}
+              >
+                Parliament Votes
+              </a>
             </Link>
           </li>
         </ul>

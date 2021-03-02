@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { loadAllData } from "../../lib/data/parliament";
-import Header from "../../components/Header";
-import ParliamentGraph from "../../components/Parliament/ParliamentGraph";
-import VoteCard, { VoteCardDummy } from "../../components/Votes/VoteCard";
-import VotesGrid from "../../components/Votes/VotesGrid";
+import { loadAllData } from "../lib/data/parliament";
+import Header from "../components/Header";
+import ParliamentGraph from "../components/Parliament/ParliamentGraph";
+import VoteCard, { VoteCardDummy } from "../components/Votes/VoteCard";
+import VotesGrid from "../components/Votes/VotesGrid";
 
 export default function Votacoes() {
   // STATE FOR PARLIAMENT DATA
